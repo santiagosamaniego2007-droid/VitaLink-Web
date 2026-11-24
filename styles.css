@@ -153,3 +153,8 @@ body > .privacy-banner{position:fixed;z-index:55;bottom:max(20px,env(safe-area-i
 @media(max-width:700px){.story-body{grid-template-columns:1fr;min-height:0}.story-copy{padding:24px 23px 8px;min-height:178px;align-self:start}.story-copy h3{font-size:34px;margin-bottom:10px}.story-copy .kicker{font-size:10px;margin-bottom:10px}.story-copy p{font-size:15px}.story-art{padding:16px 22px 20px;min-height:244px}.story-art .function-ui{padding:17px 18px;width:min(100%,310px)}.story-art .function-ui-top{margin-bottom:14px}.story-art .function-time strong{font-size:46px}.story-art .function-progress{margin:12px 0}.story-art .function-orbit{width:250px;height:250px}.story-footer{padding:10px 16px;min-height:58px;font-size:12px}.story-controls{gap:8px}.story-controls button{width:34px;height:34px}}
 @media(prefers-reduced-motion:reduce){.feature-journey.is-pinned .feature-story{position:relative;top:auto}.story-changing .story-copy,.story-changing .function-ui{animation:none}}
 @media(max-width:700px){.story-copy{min-height:215px}}@media(max-width:360px){.story-copy{min-height:240px}}
+
+/* Contacto oficial al final del pie de página. */
+.site-footer .footer-contact{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-top:20px;color:var(--muted);font-size:13px;line-height:1.5}
+.site-footer .footer-contact a{color:#9bc4ff;overflow-wrap:anywhere;text-underline-offset:3px}
+.site-footer .footer-contact a:hover,.site-footer .footer-contact a:focus-visible{text-decoration:underline;color:#d3e5ff}
