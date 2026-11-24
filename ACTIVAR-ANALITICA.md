@@ -1,0 +1,14 @@
+# VitaLink Analytics — Beta 7
+
+## Vista previa
+Abre index.html para inspeccionar el diseño. Para probar funciones necesitas Netlify Dev o un despliegue de Netlify con funciones. No uses el arrastre de archivos estáticos para esta versión. Publica como un proyecto independiente de la plataforma médica, mediante Git o Netlify CLI con build. `npm run build` copia únicamente los archivos públicos a dist. La carpeta netlify/functions no se publica como archivos estáticos. Node 22.12+.
+
+## Activación después de revisar privacidad
+1. En el proyecto publicitario de Netlify, Project configuration → Environment variables. Añade `VL_ANALYTICS_ADMIN_TOKEN` con un secreto aleatorio largo (mínimo 32 caracteres; recomendado 64 hex). Genera localmente con `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. No compartas ni subas el secreto al repositorio. Disponible solo para Functions si el plan permite scopes.
+2. Deja `VL_ANALYTICS_ENABLED` ausente o false hasta aprobar los documentos, contacto, base jurídica, transferencias a Netlify y retención; luego cambia a true y vuelve a desplegar. No necesitas Supabase ni su clave.
+3. Abre el sitio publicado, rechaza analítica: no debe aparecer ninguna petición analytics-event. Acepta solo analítica y verifica respuesta 204; abre otra página o recarga. Rechaza de nuevo y verifica que no se envíen eventos. La función exige cookie vigente, origen del sitio y tipo permitido. Con cookies bloqueadas la analítica no funciona, aunque las preferencias de interfaz puedan persistir localmente.
+4. En la dirección del sitio publicitario añade `/analytics.html`. Ingresa la clave para ver el informe. Comprueba que una clave incorrecta devuelve 401 y que no hay datos sin autorización. Cierra el informe al terminar.
+5. Verifica reglas de limitación de solicitudes en Netlify (dependen de capacidades del plan), consumo y costos. No es una medición antifraude; bots pueden simular consentimiento. No se guarda IP en los contadores, aunque Netlify puede procesarla en registros técnicos y límites. La analítica no contiene cookies publicitarias, identificadores de visitante ni datos médicos.
+6. Se conserva una única estructura con contadores por día, últimos 90 días, limpieza prevista cada día a las 06:00 UTC (01:00 Ecuador), y durante escrituras. Si el servicio se desactiva, depurar o eliminar el almacén vitalink-analytics manualmente; verificar ejecución de tareas programadas antes de publicar. El panel muestra los últimos 30 días. Las recargas cuentan; no son visitantes únicos. Un evento de cada tipo por carga, sin reintentos desde el navegador. La reproducción se cuenta al iniciar, no al terminar. Revisar consumo y disponibilidad de Functions/Blobs en tu plan.
+
+Referencias: https://docs.netlify.com/build/data-and-storage/netlify-blobs/ ; https://docs.netlify.com/build/functions/api/ ; https://docs.netlify.com/build/functions/environment-variables/ .

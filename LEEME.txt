@@ -1,0 +1,2 @@
+VitaLink Web — Beta 17.0
+Abre index.html para vista previa. La analítica requiere Netlify Functions y Blobs. Consulta ACTIVAR-ANALITICA.md antes de desplegar. La página legal es un borrador provisional; no recoge datos médicos ni reemplaza las políticas de la plataforma. El video sigue pendiente en assets/video. No se modifica la V3.2 ni Supabase.

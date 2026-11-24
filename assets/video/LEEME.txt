@@ -1,0 +1,4 @@
+Coloca aquí vitalink-demo.mp4 (preferentemente MP4 H.264 + AAC, 16:9).
+En script.js cambia const VIDEO_SRC = ''; por:
+const VIDEO_SRC = 'assets/video/vitalink-demo.mp4';
+El reproductor aparecerá cuando el archivo cargue correctamente. No hay autoplay.
