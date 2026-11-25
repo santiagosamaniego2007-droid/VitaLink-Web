@@ -36,3 +36,38 @@
   from = "/faq"
   to = "/faq.html"
   status = 200
+
+[[redirects]]
+  from = "/producto"
+  to = "/producto.html"
+  status = 200
+
+[[redirects]]
+  from = "/simulacion"
+  to = "/simulacion.html"
+  status = 200
+
+[[redirects]]
+  from = "/monitoreo"
+  to = "/monitoreo.html"
+  status = 200
+
+[[redirects]]
+  from = "/desarrollo"
+  to = "/desarrollo.html"
+  status = 200
+
+[[redirects]]
+  from = "/resultados"
+  to = "/resultados.html"
+  status = 200
+
+[[redirects]]
+  from = "/equipo"
+  to = "/equipo.html"
+  status = 200
+
+[[redirects]]
+  from = "/contacto"
+  to = "/contacto.html"
+  status = 200
