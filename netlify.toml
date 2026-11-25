@@ -11,3 +11,28 @@
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store"
     Referrer-Policy = "no-referrer"
+
+[[redirects]]
+  from = "/como-funciona"
+  to = "/como-funciona.html"
+  status = 200
+
+[[redirects]]
+  from = "/tecnologia"
+  to = "/tecnologia.html"
+  status = 200
+
+[[redirects]]
+  from = "/guia"
+  to = "/guia.html"
+  status = 200
+
+[[redirects]]
+  from = "/app"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/faq.html"
+  status = 200
