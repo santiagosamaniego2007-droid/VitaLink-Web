@@ -6,3 +6,7 @@
 4. Redesplegar rama correspondiente. Comprobar API sin clave (401), con clave (200), evento sin consentimiento (403), evento autorizado y actualización del contador. No introducir datos de pacientes. No activar plan de pago.
 5. Historial Netlify: extraer respuesta JSON de analytics-report desde Network del navegador tras consultar con clave en la web antigua. Guardar localmente. Importar contadores validados por fecha antes de habilitar recolección; no sumar dos veces. No publicar el JSON en GitHub. El historial antiguo no migra automáticamente.
 6. Retención: se eliminan filas de más de 90 días al recibir nuevos eventos; si el sitio queda inactivo, ejecutar limpieza manual. No se almacenan IP ni IDs en D1. El límite agregado por evento y día no sustituye límites de tráfico del proveedor. Revisar cuotas gratuitas y configuración antiabuso antes de publicar.
+
+## Prueba del entorno Preview
+
+Usar exclusivamente `vitalink-analytics-preview` como binding D1 del entorno Preview. Tras configurar las variables y el secreto, desplegar nuevamente esta rama. Abrir `/analytics` sin compartir la clave; comprobar rechazo de clave incorrecta, consulta con clave válida y registro de una carga consentida desde la portada. Los datos de prueba no se importan a producción.
