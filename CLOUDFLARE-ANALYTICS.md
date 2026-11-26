@@ -10,3 +10,7 @@
 ## Prueba del entorno Preview
 
 Usar exclusivamente `vitalink-analytics-preview` como binding D1 del entorno Preview. Tras configurar las variables y el secreto, desplegar nuevamente esta rama. Abrir `/analytics` sin compartir la clave; comprobar rechazo de clave incorrecta, consulta con clave válida y registro de una carga consentida desde la portada. Los datos de prueba no se importan a producción.
+
+## Activación de producción
+
+Después de guardar el binding D1 `VL_ANALYTICS_DB` apuntando a `vitalink-analytics` y las variables de producción, se requiere un nuevo despliegue. Si el panel devuelve 503, verificar también que la tabla `daily` exista en esa base mediante `SELECT COUNT(*) FROM daily;`. No importar los registros de Preview.
