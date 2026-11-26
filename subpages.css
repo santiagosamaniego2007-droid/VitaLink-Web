@@ -27,3 +27,27 @@
 @media(prefers-reduced-motion:no-preference){.guide-sequence .guide-step.is-current .guide-media img{animation:guide-art-in .85s var(--guide-motion) both}.guide-sequence .guide-step.is-current .guide-copy{animation:guide-copy-in .75s .07s var(--guide-motion) both}.guide-journey[data-direction=up] .guide-step.is-current .guide-copy{animation-name:guide-copy-up}@keyframes guide-art-in{from{opacity:.58;transform:scale(.94) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes guide-copy-in{from{opacity:.55;transform:translateY(19px)}to{opacity:1;transform:translateY(0)}}@keyframes guide-copy-up{from{opacity:.55;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}}
 @media(max-width:850px){.guide-page{--guide-header:64px}.guide-progress{padding:11px 13px 8px;border-radius:13px}.guide-progress-name{display:none}.guide-progress-links a{padding:6px 0;font-size:12px}.guide-sequence>li{min-height:0;display:block;padding:24px 0;scroll-margin-top:calc(var(--guide-header) + var(--guide-bar) + 10px)}.guide-sequence .guide-step{grid-template-columns:minmax(0,1fr);min-height:0;border-radius:22px}.guide-sequence .guide-media{padding:12px}.guide-sequence .guide-number{top:12px;left:12px;padding:6px 10px;font-size:13px}.guide-sequence .guide-copy{padding:24px;gap:14px}.guide-sequence .guide-copy h2{font-size:clamp(1.65rem,6vw,2.25rem)}}
 @media(prefers-reduced-motion:reduce){.guide-progress-track span,.guide-progress-links a,.guide-sequence .guide-step,.guide-step-nav a{transition:none}.guide-sequence .guide-media img,.guide-sequence .guide-copy{animation:none!important}.guide-page{scroll-behavior:auto}}
+
+/* Integrate original illustrations without a second frame or redundant captions */
+.vl-illustration{width:min(100%,820px);margin:clamp(1.4rem,3vw,2.3rem) auto clamp(2rem,4vw,3.2rem);padding:0;background:transparent;line-height:0;border:1px solid #365476;border-radius:22px;box-shadow:0 16px 45px #080f1c26}
+.vl-illustration img{width:100%;height:auto;max-height:none;aspect-ratio:640/380;object-fit:contain;background:transparent;border-radius:inherit}
+.vl-home-art{max-width:820px}
+.detail-page .vl-illustration:has(img[src$="contact.svg"]){width:min(100%,680px)}
+/* Motion should support reading, never compete with it. */
+@keyframes vl-rise{from{opacity:.88;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.vl-animate.vl-entered{animation-duration:.44s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+.detail-page .detail-grid article,.component-card{transition:border-color .22s,background .22s,box-shadow .22s}
+@media(hover:hover){.detail-page .detail-grid article:hover,.component-card:hover{transform:none;box-shadow:0 8px 24px #060e1b25}}
+.guide-page{--guide-motion:cubic-bezier(.22,1,.36,1)}
+.guide-progress-track span{transition-duration:.32s}
+.guide-sequence .guide-step{transition:border-color .25s,box-shadow .25s}
+.guide-sequence .guide-step.is-current{border-color:#5e83b0;box-shadow:0 18px 45px #07101b30}
+@media(prefers-reduced-motion:no-preference){
+.guide-sequence .guide-step.is-current .guide-media img{animation:guide-art-in .45s var(--guide-motion) both}
+.guide-sequence .guide-step.is-current .guide-copy{animation:guide-copy-in .42s .025s var(--guide-motion) both}
+@keyframes guide-art-in{from{opacity:.9;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes guide-copy-in{from{opacity:.88;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes guide-copy-up{from{opacity:.88;transform:translateY(-6px)}to{opacity:1;transform:none}}
+}
+@media(max-width:760px){.vl-illustration{border-radius:16px;margin:1.5rem auto 2rem}}
+@media(prefers-reduced-motion:reduce){.vl-animate.vl-entered,.guide-sequence .guide-step.is-current .guide-media img,.guide-sequence .guide-step.is-current .guide-copy{animation:none!important}.guide-progress-track span,.guide-sequence .guide-step,.detail-page .detail-grid article,.component-card{transition:none}}

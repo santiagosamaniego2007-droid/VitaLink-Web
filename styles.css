@@ -163,3 +163,13 @@ body > .privacy-banner{position:fixed;z-index:55;bottom:max(20px,env(safe-area-i
 .showcase[data-mode="2"] .showcase-progress-fill{width:100%}
 @media(max-width:760px){.showcase-progress{height:2px;margin-top:10px}}
 @media(prefers-reduced-motion:reduce){.showcase-progress-fill{transition:none}}
+
+/* Beta 20.5 — quiet shared VitaLink atmosphere on secondary pages */
+body:has(.detail-page,.legal-main,.dash)::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url('/assets/illustrations/ambient-vitalink.svg');background-position:center top;background-size:cover;background-repeat:no-repeat;opacity:.68}
+body:has(.guide-page)::before{background-position:65% top;opacity:.55}
+body:has(.monitor-page)::before{background-position:35% top;opacity:.44}
+body:has(.detail-page .vl-illustration img[src$="contact.svg"])::before{background-position:right top;opacity:.63}
+body:has(.detail-page .vl-illustration img[src$="development.svg"])::before{background-position:left top;opacity:.56}
+body:has(.legal-main,.dash)::before{opacity:.28}
+@media(max-width:760px){body:has(.detail-page,.legal-main,.dash)::before{background-size:auto 100%;opacity:.43}}
+@media(prefers-reduced-motion:no-preference){.reveal{transform:translateY(10px);transition:opacity .48s cubic-bezier(.22,1,.36,1),transform .48s cubic-bezier(.22,1,.36,1)}.reveal.visible{transform:none}}
