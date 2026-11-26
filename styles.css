@@ -155,3 +155,11 @@ body > .privacy-banner{position:fixed;z-index:55;bottom:max(20px,env(safe-area-i
 @media(max-width:700px){.story-copy{min-height:215px}}@media(max-width:360px){.story-copy{min-height:240px}}
 
 .site-footer .footer-contact a{overflow-wrap:anywhere}
+
+/* Ecosystem journey: progress follows the existing three-state viewer. */
+.showcase-progress{height:3px;margin-top:12px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;pointer-events:none}
+.showcase-progress-fill{display:block;height:100%;width:33.333333%;border-radius:inherit;background:rgba(255,255,255,.96);transition:width .4s var(--ease,ease);box-shadow:0 0 8px rgba(255,255,255,.25)}
+.showcase[data-mode="1"] .showcase-progress-fill{width:66.666667%}
+.showcase[data-mode="2"] .showcase-progress-fill{width:100%}
+@media(max-width:760px){.showcase-progress{height:2px;margin-top:10px}}
+@media(prefers-reduced-motion:reduce){.showcase-progress-fill{transition:none}}
