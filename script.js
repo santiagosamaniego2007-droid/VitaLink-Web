@@ -156,15 +156,34 @@ if('IntersectionObserver' in window && !motion.matches){
  document.querySelectorAll('.section-intro,.benefits article,.demo,.video-frame,.tech-grid article,.app-block,.faq,.closing').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el);});
 }
 if(!motion.matches){let scheduled=false;function updateParallax(){scheduled=false;const rect=showcase.getBoundingClientRect();if(rect.bottom>0 && rect.top<innerHeight){showcase.style.setProperty('--parallax',`${Math.max(-24,Math.min(24,(innerHeight/2-rect.top-rect.height/2)*.055))}px`);}}window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(updateParallax);}},{passive:true});updateParallax();}
-// Para publicar el video: guarda assets/video/vitalink-demo.mp4 y cambia la línea siguiente.
-const VIDEO_SRC = ''; // Ejemplo: 'assets/video/vitalink-demo.mp4'
+// Video explicativo: carga diferida, reproducción silenciosa una sola vez.
+const VIDEO_SRC = '/assets/video/vitalink-demo.mp4';
 const player=document.getElementById('product-video'),placeholder=document.getElementById('video-placeholder'),videoStatus=document.getElementById('video-status');
-if(VIDEO_SRC){
- player.addEventListener('loadedmetadata',()=>{placeholder.hidden=true;player.hidden=false;});
- player.addEventListener('error',()=>{player.hidden=true;placeholder.hidden=false;videoStatus.textContent='El video no está disponible en este momento.';});
- player.src=VIDEO_SRC;
+const videoFrame=document.getElementById('video-frame'),videoStart=document.getElementById('video-start'),videoAudio=document.getElementById('video-audio');
+if(player&&placeholder&&videoFrame&&videoStart&&videoAudio){
+ let requested=false,autoAttempted=false,visible=false,manual=false;
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ function loadVideo(){if(!requested){requested=true;player.src=VIDEO_SRC;}}
+ function audioLabel(){videoAudio.textContent=player.paused?'Reproducir con sonido':player.muted?'Activar sonido':'Silenciar video';}
+ function playWithSound(){manual=true;autoAttempted=true;loadVideo();player.muted=false;player.play().catch(()=>{if(player.error)return;videoStatus.textContent='Pulsa reproducir para iniciar el video.';});}
+ videoStart.addEventListener('click',playWithSound);
+ videoAudio.addEventListener('click',()=>{if(player.paused){playWithSound();}else{manual=true;autoAttempted=true;player.muted=!player.muted;audioLabel();}});
+ player.addEventListener('loadedmetadata',()=>{placeholder.hidden=true;player.hidden=false;videoAudio.hidden=false;audioLabel();});
+ player.addEventListener('error',()=>{player.hidden=true;placeholder.hidden=false;videoAudio.hidden=true;videoStart.disabled=true;videoStatus.textContent='El video no está disponible en este momento.';});
+ for(const name of ['playing','pause','volumechange','ended'])player.addEventListener(name,audioLabel);
+ function pauseOutside(){if(!player.paused&&!document.fullscreenElement&&!player.webkitDisplayingFullscreen&&document.pictureInPictureElement!==player)player.pause();}
+ if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>{for(const e of entries){
+   visible=e.isIntersecting&&e.intersectionRatio>=.55;
+   if(visible&&!autoAttempted&&!manual&&!reduce.matches&&!navigator.connection?.saveData&&!document.hidden){
+    autoAttempted=true;loadVideo();player.muted=true;player.play().then(()=>{if(!visible||document.hidden)pauseOutside();}).catch(()=>{});
+   }
+   if(!e.isIntersecting||e.intersectionRatio<.1)pauseOutside();
+  }},{threshold:[0,.1,.55]});
+  observer.observe(videoFrame);
+ }
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseOutside();});
 }
-
 
 // Fondo Vitalink: se desvanece progresivamente al desplazarse.
 const ambient=document.querySelector('.ambient-backdrop');
