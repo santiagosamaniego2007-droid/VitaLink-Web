@@ -51,3 +51,11 @@
 }
 @media(max-width:760px){.vl-illustration{border-radius:16px;margin:1.5rem auto 2rem}}
 @media(prefers-reduced-motion:reduce){.vl-animate.vl-entered,.guide-sequence .guide-step.is-current .guide-media img,.guide-sequence .guide-step.is-current .guide-copy{animation:none!important}.guide-progress-track span,.guide-sequence .guide-step,.detail-page .detail-grid article,.component-card{transition:none}}
+
+/* Beta 20.7 — scroll-linked reveal of the whole step, in either direction. */
+@media(prefers-reduced-motion:no-preference){
+.guide-journey.guide-scroll-reveal .guide-sequence .guide-step{opacity:var(--step-visibility,1);transform:translateY(var(--step-offset,0px));transition:opacity .18s linear,transform .18s ease-out,border-color .25s,box-shadow .25s}
+.guide-journey.guide-scroll-reveal .guide-sequence .guide-step:focus-within{opacity:1;transform:none}
+.guide-journey.guide-scroll-reveal .guide-sequence .guide-step.is-current .guide-media img,.guide-journey.guide-scroll-reveal .guide-sequence .guide-step.is-current .guide-copy{animation:none}
+}
+@media(prefers-reduced-motion:reduce){.guide-journey.guide-scroll-reveal .guide-sequence .guide-step{opacity:1;transform:none;transition:none}}
