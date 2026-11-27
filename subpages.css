@@ -74,3 +74,6 @@
 
 /* Actual digital interface previews. */
 .vl-home-preview{margin:0;min-width:0;align-self:center;border:1px solid #365171;border-radius:20px;background:#13253d;overflow:hidden}.vl-home-preview a{display:block;padding:10px}.vl-home-preview img{display:block;width:100%;height:auto;border-radius:10px}.vl-home-preview figcaption{padding:10px 15px;color:#b5c4db;font-size:.8rem}.vl-home-preview a:focus-visible{outline:2px solid #8cbcff;outline-offset:-3px}.vl-development-preview{display:block;margin:14px 0;border:1px solid #365171;border-radius:12px;overflow:hidden}.vl-development-preview img{display:block;width:100%;height:auto}.vl-development-preview:focus-visible{outline:2px solid #8cbcff}
+
+/* Space the homepage digital section buttons consistently across line wraps. */
+#app .vl-app-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:26px}#app .vl-app-actions .button{margin:0;max-width:100%;white-space:normal;text-align:center}@media(max-width:480px){#app .vl-app-actions{gap:12px;margin-top:20px}#app .vl-app-actions .button{width:100%;justify-content:center}}
