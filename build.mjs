@@ -4,3 +4,6 @@ for(const path of ['index.html','producto.html','simulacion.html','monitoreo.htm
 
 await cp('_headers','dist/_headers');
 await cp('404.html','dist/404.html');
+
+// Publish search discovery and ownership verification files at the site root.
+for (const path of ['robots.txt', 'sitemap.xml', 'googlea504d939beb881c6.html']) await cp(path, 'dist/'+path);
