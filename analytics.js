@@ -9,6 +9,6 @@
  }
  function visit(){event('pageview');}
  document.addEventListener('vl:privacy-change',visit);visit();
- document.addEventListener('click',e=>{const a=e.target.closest?.('a[href]');if(a){try{if(new URL(a.href).origin==='https://vitalink-ec.xyz')event('platform_click');}catch{}}},true);
+ document.addEventListener('click',e=>{const a=e.target.closest?.('a[href]');if(a){try{if(new URL(a.href).origin==='https://vitalink-platform.pages.dev')event('platform_click');}catch{}}},true);
  document.getElementById('product-video')?.addEventListener('playing',()=>event('video_start'));
 })();
