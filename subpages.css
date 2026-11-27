@@ -77,3 +77,6 @@
 
 /* Space the homepage digital section buttons consistently across line wraps. */
 #app .vl-app-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:26px}#app .vl-app-actions .button{margin:0;max-width:100%;white-space:normal;text-align:center}@media(max-width:480px){#app .vl-app-actions{gap:12px;margin-top:20px}#app .vl-app-actions .button{width:100%;justify-content:center}}
+
+/* Real hardware development evidence. */
+.vl-hardware-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.vl-hardware-gallery .vl-interface-shot{padding:10px}.vl-hardware-gallery .vl-interface-shot img{aspect-ratio:848/480;object-fit:contain}.vl-evidence-gallery{scroll-margin-top:100px}@media(max-width:800px){.vl-hardware-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.vl-hardware-gallery{grid-template-columns:1fr}}
